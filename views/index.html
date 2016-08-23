@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/javascripts/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script>
+        function headertoken(){
+            var token = window.localStorage.getItem('token');
+              if (token) {
+                $.ajaxSetup({
+                    headers: {
+                        'x-access-token': token
+                    }
+                });
+            }
+        }
+        headertoken();
+        function authenticate(){
+            var email =$("#email").val();
+            var password=$("#password").val();
+            var data = {"email": email,"password":password};
+            $.ajax({
+                url:'/api/authenticate',
+                type:'POST',
+                data:data,
+                success:function(data,status){
+
+                    if(status == 'success'){
+                        //  location.href='home';
+                        window.localStorage.setItem('token', data.token)
+                        alert(JSON.stringify(data))
+                    }
+                },
+                error:function(data,status){
+
+                    if(status == "error"){
+                        alert(JSON.stringify(data))
+                    }
+                }
+            });
+        }
+        function save(){
+            var email =$("#email").val();
+            var password=$("#password").val();
+            var data = {"email": email,"password":password};
+            $.ajax({
+                url:'/api/signin',
+                type:'POST',
+                data:data,
+                success:function(data,status){
+
+                    if(status == 'success'){
+                        //  location.href='home';
+                        window.localStorage.setItem('token', data.token)
+                        alert(JSON.stringify(data))
+                    }
+                },
+                error:function(data,status){
+
+                    if(status == "error"){
+                        alert("fail")
+                    }
+                }
+            });
+        }
+        function getme(){
+            headertoken()
+            $.ajax({
+                url:'/api/me',
+                type:'get',
+                success:function(data,status){
+
+                    if(status == 'success'){
+                        //  location.href='home';
+                        alert(JSON.stringify(data))
+                    }
+                },
+                error:function(data,status){
+
+                    if(status == "error"){
+                        alert("fail")
+                    }
+                }
+            });
+        }
+        function jobs(){
+            $.ajax({
+                url:'/api/jobs',
+                type:'post',
+                success:function(data,status){
+
+                    if(status == 'success'){
+                        //  location.href='home';
+                        alert(JSON.stringify(data))
+                    }
+                },
+                error:function(data,status){
+
+                    if(status == "error"){
+                        alert(JSON.stringify(data))
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<input type="text" name="email" id="email">
+<input type="text" name="password" id="password">
+<button id="button" onclick="save()">get</button>
+<button onclick="authenticate()">authenticate</button>
+<button onclick="getme()">getme</button>
+<button onclick="jobs()">jobs</button>
+</body>
+</html>

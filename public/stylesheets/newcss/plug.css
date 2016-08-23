@@ -1,0 +1,24 @@
+/* CSS Document */
+.alertdiv {
+	position: fixed;
+	width: 800px;
+	height: 500px;
+	top: 50px;
+	left: 200px;
+	border: thin silver solid;
+	overflow: hidden;
+	display: none;
+	left: 0px;
+	right: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	background: none repeat scroll 0% 0% rgb(233, 234, 238);
+	border: 2px solid rgb(255, 255, 255);
+	margin: 0px auto;
+	text-align: center;
+	box-shadow: 1px 2px 6px rgba(0, 0, 0, 0.5);
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	z-index: 100;
+}

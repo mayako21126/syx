@@ -1,0 +1,48 @@
+﻿.chatll {
+	min-height: 30px;
+	max-height: none;
+	margin-right: 10px;
+	
+	margin-top: 2px;
+	float: right;
+	clear: both;
+	 font-weight:normal;
+	 margin-bottom:10px;
+}
+
+.chatlr {
+	min-height: 30px;
+	max-height: none;
+	margin-left: 10px;
+	
+	margin-top: 2px;
+	float: left;
+	clear: both;
+	margin-bottom:10px;
+
+}
+
+.rightChat {
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 8px;
+	background-color:rgba(66, 139, 202,0.4);
+	border: 1px solid #C0C0C0;
+	clear: both;
+	float: right; margin-right:42px;margin-top:-20px;
+	margin-left:10px;
+		
+}
+
+.leftChat {
+	padding-left: 10px;
+	padding-right: 10px;
+	border: 1px solid #C0C0C0;
+	background-color: rgba(221, 221, 221,0.3);
+	border-radius: 8px;
+	clear: both;
+	float: left; margin-left:42px;margin-top:-20px;
+	margin-right:10px;
+}
+#chat label{
+	font-weight:normal !important;}

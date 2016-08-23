@@ -1,0 +1,4 @@
+build/*.js
+config/*.js
+src/assets/js/app.js
+src/assets/js/wx.js
