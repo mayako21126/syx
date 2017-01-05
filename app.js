@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var mongoose = require("mongoose");
-var qiniu = require('qiniu');
+//var qiniu = require('qiniu');
 var bodyParser = require('body-parser');
 var config = require( './common/config' );
 var morgan = require("morgan");
@@ -11,7 +11,7 @@ var morgan = require("morgan");
 
 global.dbHelper = require( './common/dbHelper' );
 
-global.db = mongoose.connect("mongodb://127.0.0.1:27017");
+//global.db = mongoose.connect("mongodb://127.0.0.1:27017");
 
 // 设定views变量，意为视图存放的目录
 app.set('views', path.join(__dirname, 'views'));
