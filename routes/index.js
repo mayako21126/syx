@@ -7,6 +7,24 @@ module.exports = function (app,express) {
     var User = global.dbHelper.getModel('Users');
 
     process.env.JWT_SECRET = "asdklq2je3l123nkl1230-4124jmnl15";
+    app.post('/api/reg',function (req, res) {
+
+                let token = jwt.sign({'id':'138'}, process.env.JWT_SECRET,{'expiresIn':"2 days"});
+                res.json({
+                    type: true,
+                    data: {'33':'33'},
+                    token:token
+                });
+
+    });
+    app.post('/api/login',[ensureAuthorized],function (req, res) {
+
+                res.json({
+                    type:true,
+                    data:{'33':'1','id':req.decoded.id}
+                })
+
+    });
 
     app.post('/api/authenticate',function (req, res) {
 
@@ -93,7 +111,7 @@ module.exports = function (app,express) {
     });
     function ensureAuthorized(req, res, next) {
         var bearerHeader = req.headers['x-access-token'];
-        console.log(req.headers)
+        //console.log(req.headers)
         if (typeof bearerHeader !== 'undefined') {
 
             jwt.verify(bearerHeader, process.env.JWT_SECRET, function(err, decoded) {
@@ -102,8 +120,7 @@ module.exports = function (app,express) {
                 } else {
                     // 如果没问题就把解码后的信息保存到请求中，供后面的路由使用
                     console.log(decoded)
-                    req.api_user = decoded;
-                    req.body=decoded._doc;
+                    req.decoded=decoded
                     next();
                 }
                 return  true
